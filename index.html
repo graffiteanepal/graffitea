@@ -16,14 +16,16 @@
   >
   <style>
     :root {
-      --color-primary: #5c3d2e;
-      --color-secondary: #d4a853;
-      --color-accent: #7a9e6e;
-      --color-bg: #faf6f1;
-      --color-surface: #f0e8dc;
-      --color-dark: #2c1f14;
-      --color-muted: #7a6a5a;
-      --color-border: #e0d5c5;
+      --color-primary: #19b3fa;
+      --color-secondary: #ffcc00;
+      --color-accent: #8c8c8c;
+      --color-bg: #f4fbff;
+      --color-surface: #ffffff;
+      --color-dark: #10222d;
+      --color-muted: #5f707b;
+      --color-border: #c8dce6;
+      --color-highlight-soft: rgba(25, 179, 250, 0.18);
+      --color-accent-soft: rgba(255, 204, 0, 0.16);
 
       --font-display: "Playfair Display", Georgia, serif;
       --font-body: "Lato", "Segoe UI", sans-serif;
@@ -64,8 +66,8 @@
       font-family: var(--font-body);
       color: var(--color-dark);
       background:
-        radial-gradient(circle at top left, rgba(212, 168, 83, 0.18), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(122, 158, 110, 0.14), transparent 28%),
+        radial-gradient(circle at top left, var(--color-highlight-soft), transparent 30%),
+        radial-gradient(circle at bottom right, var(--color-accent-soft), transparent 28%),
         var(--color-bg);
       line-height: 1.6;
     }
@@ -298,7 +300,7 @@
       width: 220px;
       height: 220px;
       border-radius: 32% 68% 48% 52% / 46% 34% 66% 54%;
-      background: rgba(122, 158, 110, 0.16);
+      background: var(--color-highlight-soft);
       filter: blur(1px);
     }
 
@@ -307,7 +309,7 @@
       width: 280px;
       height: 280px;
       background:
-        radial-gradient(circle, rgba(212, 168, 83, 0.22) 1px, transparent 1px);
+        radial-gradient(circle, color-mix(in srgb, var(--color-secondary) 32%, transparent) 1px, transparent 1px);
       background-size: 16px 16px;
       border-radius: 50%;
     }
@@ -339,7 +341,7 @@
     }
 
     .stack-card:nth-child(3) {
-      background: rgba(122, 158, 110, 0.12);
+      background: var(--color-highlight-soft);
     }
 
     .stack-card small {
@@ -401,7 +403,7 @@
       min-height: 420px;
       border-radius: 32px;
       background:
-        linear-gradient(160deg, rgba(92, 61, 46, 0.95), rgba(122, 158, 110, 0.92)),
+        linear-gradient(160deg, color-mix(in srgb, var(--color-primary) 94%, #000 6%), color-mix(in srgb, var(--color-accent) 88%, var(--color-primary) 12%)),
         var(--color-primary);
       position: relative;
       overflow: hidden;
@@ -1041,6 +1043,25 @@
         display: none;
       }
     }
+
+    @media (max-width: 460px) {
+      .whatsapp-fab {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+
+    @supports not (color: color-mix(in srgb, white, black)) {
+      .hero-stage::after {
+        background:
+          radial-gradient(circle, rgba(255, 204, 0, 0.22) 1px, transparent 1px);
+        background-size: 16px 16px;
+      }
+
+      .about-art {
+        background: linear-gradient(160deg, var(--color-primary), var(--color-accent)), var(--color-primary);
+      }
+    }
   </style>
 </head>
 <body>
@@ -1604,4 +1625,8 @@
     });
   </script>
 </body>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 </html>
