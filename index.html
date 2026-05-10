@@ -681,6 +681,9 @@
       margin: 0.8rem 0 0.5rem;
       font-family: var(--font-display);
       font-size: 2rem;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .feature-card p,
@@ -1075,6 +1078,10 @@
     }
 
     @media (max-width: 460px) {
+      .feature-card h3 {
+        font-size: 1.6rem;
+      }
+
       .whatsapp-fab {
         right: 16px;
         bottom: 16px;
