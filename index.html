@@ -572,13 +572,13 @@
     </div>
 
     <div id="gallery-modal"
-      class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-3 backdrop-blur-sm sm:p-4">
+      class="fixed inset-0 z-50 hidden items-start justify-center overflow-y-auto bg-slate-950/70 p-3 backdrop-blur-sm sm:items-center sm:p-4">
       <div
-        class="flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-[2rem] border border-white/16 bg-[#0a6d9f]/96 shadow-glow">
-        <div class="flex items-center justify-between gap-4 border-b border-white/12 px-5 py-4 sm:px-6">
+        class="my-auto flex max-h-[calc(100vh-1.5rem)] w-full max-w-6xl flex-col overflow-hidden rounded-[2rem] border border-white/16 bg-[#0a6d9f]/96 shadow-glow sm:max-h-[calc(100vh-2rem)]">
+        <div class="flex items-start justify-between gap-4 border-b border-white/12 px-4 py-4 sm:items-center sm:px-6">
           <div>
             <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teaYellow/78">Gallery</p>
-            <h2 class="mt-1 font-display text-2xl font-bold text-white">Shop moments, counter pours, and ride previews
+            <h2 class="mt-1 max-w-[15rem] font-display text-xl font-bold leading-tight text-white sm:max-w-none sm:text-2xl">Shop moments, counter pours, and ride previews
             </h2>
           </div>
           <button type="button" data-modal-close="gallery-modal"
@@ -592,17 +592,17 @@
           </button>
         </div>
 
-        <div class="grid min-h-0 flex-1 gap-4 p-4 sm:p-5 lg:grid-cols-[minmax(0,1fr)_18rem]">
+        <div class="grid min-h-0 flex-1 gap-4 p-3 sm:p-5 lg:grid-cols-[minmax(0,1fr)_18rem]">
           <div class="flex min-h-0 flex-col gap-4">
             <div
-              class="relative flex min-h-[18rem] flex-1 items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/14 bg-[#06263a] sm:min-h-[24rem]">
+              class="relative flex min-h-[13rem] flex-1 items-center justify-center overflow-hidden rounded-[1.5rem] border border-white/14 bg-[#06263a] sm:min-h-[18rem] lg:min-h-[24rem]">
               <img id="gallery-preview-image" src="assets/buff-pickle.png" alt="Graffitea gallery preview"
                 class="h-full w-full object-cover" />
               <video id="gallery-preview-video" class="hidden h-full w-full object-cover" controls playsinline muted
                 loop></video>
 
               <button type="button" id="gallery-prev"
-                class="absolute left-3 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/16 bg-slate-950/48 text-white transition hover:bg-slate-950/68 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-[#06263a]"
+                class="absolute left-2 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/16 bg-slate-950/48 text-white transition hover:bg-slate-950/68 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-[#06263a] sm:left-3 sm:h-11 sm:w-11"
                 aria-label="Previous media">
                 <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -610,7 +610,7 @@
                 </svg>
               </button>
               <button type="button" id="gallery-next"
-                class="absolute right-3 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/16 bg-slate-950/48 text-white transition hover:bg-slate-950/68 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-[#06263a]"
+                class="absolute right-2 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/16 bg-slate-950/48 text-white transition hover:bg-slate-950/68 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-[#06263a] sm:right-3 sm:h-11 sm:w-11"
                 aria-label="Next media">
                 <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -620,15 +620,15 @@
             </div>
 
             <div class="rounded-[1.5rem] border border-white/14 bg-white/10 px-4 py-4 text-white backdrop-blur">
-              <div class="flex items-center justify-between gap-3">
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p id="gallery-preview-type"
                     class="text-xs font-semibold uppercase tracking-[0.24em] text-teaYellow/78">Image</p>
-                  <h3 id="gallery-preview-title" class="mt-2 font-display text-2xl font-bold">Buff pickle shelf drop
+                  <h3 id="gallery-preview-title" class="mt-2 font-display text-xl font-bold leading-tight sm:text-2xl">Buff pickle shelf drop
                   </h3>
                 </div>
                 <span id="gallery-preview-count"
-                  class="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white/76">1 / 6</span>
+                  class="w-fit rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white/76">1 / 6</span>
               </div>
               <p id="gallery-preview-description" class="mt-3 text-sm leading-6 text-white/76">
                 Small-batch shelf picks for quick take-home orders after tea.
@@ -636,12 +636,12 @@
             </div>
           </div>
 
-          <div class="min-h-0 overflow-y-auto pr-1">
-            <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-1">
+          <div class="min-h-0 overflow-x-auto overflow-y-visible pb-1 pr-0 lg:overflow-y-auto lg:pr-1">
+            <div class="flex gap-3 lg:grid lg:grid-cols-1">
               <button type="button" data-gallery-item data-type="image" data-src="assets/buff-pickle.png"
                 data-title="Buff pickle shelf drop"
                 data-description="Small-batch shelf picks for quick take-home orders after tea."
-                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                class="gallery-thumb min-w-[9rem] flex-none rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark lg:min-w-0">
                 <img src="assets/buff-pickle.png" alt="Buff pickle shelf drop"
                   class="h-24 w-full rounded-[1rem] object-cover" />
                 <p class="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-teaYellow/78">Image</p>
@@ -651,7 +651,7 @@
               <button type="button" data-gallery-item data-type="image" data-src="assets/chicken-pickle.png"
                 data-title="Chicken pickle counter pack"
                 data-description="A richer local product line for snack bundles and shelf pickup."
-                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                class="gallery-thumb min-w-[9rem] flex-none rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark lg:min-w-0">
                 <img src="assets/chicken-pickle.png" alt="Chicken pickle counter pack"
                   class="h-24 w-full rounded-[1rem] object-cover" />
                 <p class="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-teaYellow/78">Image</p>
@@ -661,7 +661,7 @@
               <button type="button" data-gallery-item data-type="video" data-src="assets/cold-brew-loop.mp4"
                 data-poster="assets/cold-brew-coffee.png" data-title="Cold brew pour reel"
                 data-description="A short loop from the counter showing chilled coffee service and slow-pour detail."
-                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                class="gallery-thumb min-w-[9rem] flex-none rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark lg:min-w-0">
                 <div class="relative">
                   <img src="assets/cold-brew-coffee.png" alt="Cold brew pour reel"
                     class="h-24 w-full rounded-[1rem] object-cover" />
@@ -675,7 +675,7 @@
               <button type="button" data-gallery-item data-type="image" data-src="assets/fruit-salad.png"
                 data-title="Fruit counter colors"
                 data-description="Fresh seasonal color for afternoon refreshment bundles and pickup trays."
-                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                class="gallery-thumb min-w-[9rem] flex-none rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark lg:min-w-0">
                 <img src="assets/fruit-salad.png" alt="Fruit counter colors"
                   class="h-24 w-full rounded-[1rem] object-cover" />
                 <p class="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-teaYellow/78">Image</p>
@@ -685,7 +685,7 @@
               <button type="button" data-gallery-item data-type="video" data-src="assets/mint-lounge-loop.mp4"
                 data-poster="assets/mint-lemonde.png" data-title="Mint lemonade chill clip"
                 data-description="A quick motion loop built around one of the brighter cold counter pours."
-                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                class="gallery-thumb min-w-[9rem] flex-none rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark lg:min-w-0">
                 <div class="relative">
                   <img src="assets/mint-lemonde.png" alt="Mint lemonade chill clip"
                     class="h-24 w-full rounded-[1rem] object-cover" />
@@ -699,7 +699,7 @@
               <button type="button" data-gallery-item data-type="image" data-src="assets/juju-dhau.png"
                 data-title="Sweet finish at the counter"
                 data-description="A soft dessert-side stop for tea sessions and weekend catch-ups."
-                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                class="gallery-thumb min-w-[9rem] flex-none rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark lg:min-w-0">
                 <img src="assets/juju-dhau.png" alt="Sweet finish at the counter"
                   class="h-24 w-full rounded-[1rem] object-cover" />
                 <p class="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-teaYellow/78">Image</p>
