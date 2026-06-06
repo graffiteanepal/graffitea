@@ -731,29 +731,30 @@
         </div>
 
         <div class="px-5 py-5 sm:px-6 sm:py-6">
-          <form id="contact-form" data-sheet-endpoint="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec" class="grid gap-4">
+
+          <form id="contact-form" action="https://sheetdb.io/api/v1/ss0msqcydjdpa" class="grid gap-4">
             <div class="grid gap-4 sm:grid-cols-2">
               <label class="grid gap-2 text-sm font-semibold text-white">
                 Full name
-                <input type="text" name="full_name" autocomplete="name" required
+                <input type="text" name="data[full_name]" autocomplete="name" required
                   class="min-h-12 rounded-2xl border border-white/18 bg-white/10 px-4 text-base font-medium text-white placeholder:text-white/45 focus:border-teaYellow focus:outline-none focus:ring-2 focus:ring-teaYellow/60" />
               </label>
               <label class="grid gap-2 text-sm font-semibold text-white">
                 Email
-                <input type="email" name="email" autocomplete="email" required
+                <input type="email" name="data[email]" autocomplete="email" required
                   class="min-h-12 rounded-2xl border border-white/18 bg-white/10 px-4 text-base font-medium text-white placeholder:text-white/45 focus:border-teaYellow focus:outline-none focus:ring-2 focus:ring-teaYellow/60" />
               </label>
             </div>
 
             <label class="grid gap-2 text-sm font-semibold text-white">
               Contact number
-              <input type="tel" name="contact_number" autocomplete="tel"
+              <input type="tel" name="data[contact_number]" autocomplete="tel"
                 class="min-h-12 rounded-2xl border border-white/18 bg-white/10 px-4 text-base font-medium text-white placeholder:text-white/45 focus:border-teaYellow focus:outline-none focus:ring-2 focus:ring-teaYellow/60" />
             </label>
 
             <label class="grid gap-2 text-sm font-semibold text-white">
               Message
-              <textarea name="message" rows="5" required
+              <textarea name="data[message]" rows="5" required
                 placeholder='your interest? ride to "destination" or any specific product'
                 class="rounded-[1.5rem] border border-white/18 bg-white/10 px-4 py-3 text-base font-medium text-white placeholder:text-white/45 focus:border-teaYellow focus:outline-none focus:ring-2 focus:ring-teaYellow/60"></textarea>
             </label>
@@ -763,9 +764,13 @@
               <input type="text" name="company" tabindex="-1" autocomplete="off" />
             </label>
 
-            <p class="text-xs leading-5 text-white/60">
-              Replace the placeholder Google Apps Script URL on this form with your deployed web app endpoint to store submissions in Google Sheets.
-            </p>
+            <!-- <p class="text-xs leading-5 text-white/60">
+              Replace the placeholder SheetDB API URL on this form with your live SheetDB endpoint. Your Google Sheet
+              should use first-row columns named <code class="font-mono text-[0.7rem] text-white/80">full_name</code>,
+              <code class="font-mono text-[0.7rem] text-white/80">email</code>,
+              <code class="font-mono text-[0.7rem] text-white/80">contact_number</code>, and
+              <code class="font-mono text-[0.7rem] text-white/80">message</code>.
+            </p> -->
 
             <div class="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
               <p id="contact-form-status" class="hidden text-sm font-medium text-teaMist"></p>
@@ -972,11 +977,11 @@
     contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      const endpoint = contactForm.dataset.sheetEndpoint;
+      const endpoint = contactForm.action;
       const formData = new FormData(contactForm);
 
-      if (!endpoint || endpoint.includes("YOUR_DEPLOYMENT_ID")) {
-        setContactStatus("Add your deployed Google Apps Script URL to data-sheet-endpoint before sending submissions.", "error");
+      if (!endpoint || endpoint.includes("YOUR_SHEETDB_API_ID")) {
+        setContactStatus("Add your live SheetDB API URL to the form action before sending submissions.", "error");
         return;
       }
 
@@ -985,30 +990,26 @@
         return;
       }
 
-      const payload = new URLSearchParams({
-        fullName: String(formData.get("full_name") || ""),
-        email: String(formData.get("email") || ""),
-        contactNumber: String(formData.get("contact_number") || ""),
-        message: String(formData.get("message") || ""),
-        pageUrl: window.location.href,
-        userAgent: window.navigator.userAgent,
-      });
+      formData.delete("company");
 
       contactSubmitButton.disabled = true;
       contactSubmitLabel.textContent = "Sending...";
-      setContactStatus("Sending your message to Google Sheets...", "pending");
+      setContactStatus("Sending your message...", "pending");
 
       try {
-        await fetch(endpoint, {
+        const response = await fetch(endpoint, {
           method: "POST",
-          mode: "no-cors",
-          body: payload,
+          body: formData,
         });
 
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+
         contactForm.reset();
-        setContactStatus("Thanks. Your message was sent to the Graffitea submissions sheet.", "success");
+        setContactStatus("Thanks. Your message was sent.", "success");
       } catch (error) {
-        setContactStatus("The submission could not be sent. Check the Apps Script URL and deployment settings.", "error");
+        setContactStatus("The submission could not be sent. Check the URL, permissions, and column names.", "error");
       } finally {
         contactSubmitButton.disabled = false;
         contactSubmitLabel.textContent = "Send inquiry";
