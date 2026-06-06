@@ -1,1666 +1,1023 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Graffitea | Tea & Cold Press Juice</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Graffitea is a cozy local tea and cold press shop in Aloknagar, Kathmandu serving handcrafted teas and small-batch juices.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    content="Graffitea is a local tea shop and cycling hangout for masala tea, cold presses, local products, and weekend rides across Nepal." />
+  <title>Graffitea | Tea, trails, and good company</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --color-primary: #19b3fa;
-      --color-secondary: #ffcc00;
-      --color-accent: #8c8c8c;
-      --color-bg: #f4fbff;
-      --color-surface: #ffffff;
-      --color-dark: #10222d;
-      --color-muted: #5f707b;
-      --color-border: #c8dce6;
-      --color-highlight-soft: rgba(25, 179, 250, 0.18);
-      --color-accent-soft: rgba(255, 204, 0, 0.16);
-
-      --font-display: "Playfair Display", Georgia, serif;
-      --font-body: "Lato", "Segoe UI", sans-serif;
-
-      --radius-sm: 6px;
-      --radius-md: 12px;
-      --radius-lg: 20px;
-      --section-padding: 80px 2rem;
-      --container: 1180px;
-      --shadow-soft: 0 18px 50px rgba(44, 31, 20, 0.08);
-      --shadow-card: 0 14px 35px rgba(44, 31, 20, 0.12);
-    }
-
-    /* ═══════════════════════════════════════════
-       SECTION VISIBILITY CONTROLS
-       To hide a section: change `display: block` to `display: none`
-       ═══════════════════════════════════════════ */
-    .section--hero {
-      display: block;
-    }
-
-    .section--marquee {
-      display: block;
-    }
-
-    .section--about {
-      display: block;
-    }
-
-    .section--menu {
-      display: block;
-    }
-
-    .section--cold-press {
-      display: block;
-    }
-
-    .section--gallery {
-      display: block;
-    }
-
-    .section--testimonials {
-      display: block;
-    }
-
-    .section--location {
-      display: block;
-    }
-
-    .section--contact {
-      display: block;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font-body);
-      color: var(--color-dark);
-      background:
-        radial-gradient(circle at top left, var(--color-highlight-soft), transparent 30%),
-        radial-gradient(circle at bottom right, var(--color-accent-soft), transparent 28%),
-        var(--color-bg);
-      line-height: 1.6;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    textarea {
-      font: inherit;
-    }
-
-    .container {
-      width: min(100% - 2rem, var(--container));
-      margin: 0 auto;
-    }
-
-    .section-shell {
-      padding: var(--section-padding);
-      position: relative;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.84rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      margin-bottom: 1rem;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 2.2rem;
-      height: 1px;
-      background: currentColor;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1.05;
-      margin: 0 0 1rem;
-    }
-
-    .section-copy {
-      color: var(--color-muted);
-      max-width: 640px;
-      margin: 0;
-    }
-
-    .site-nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-      border-bottom: 1px solid transparent;
-    }
-
-    .site-nav.scrolled {
-      background: rgba(250, 246, 241, 0.94);
-      backdrop-filter: blur(14px);
-      border-color: rgba(224, 213, 197, 0.9);
-      box-shadow: 0 8px 24px rgba(44, 31, 20, 0.06);
-    }
-
-    .nav-inner {
-      width: min(100% - 2rem, var(--container));
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1rem 0;
-    }
-
-    .brand-lockup {
-      display: inline-flex;
-      flex-direction: column;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-
-    .brand-lockup strong {
-      font-family: var(--font-display);
-      font-size: 1.7rem;
-      font-weight: 700;
-    }
-
-    .brand-lockup span {
-      font-style: italic;
-      color: var(--color-muted);
-      margin-top: 0.25rem;
-    }
-
-    .nav-links {
-      display: none;
-      align-items: center;
-      gap: 1.25rem;
-      font-weight: 700;
-      color: var(--color-muted);
-    }
-
-    .nav-links a {
-      position: relative;
-      padding-bottom: 0.2rem;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--color-secondary);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.2s ease;
-    }
-
-    .nav-links a.active,
-    .nav-links a:hover {
-      color: var(--color-dark);
-    }
-
-    .nav-links a.active::after,
-    .nav-links a:hover::after {
-      transform: scaleX(1);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      border-radius: 999px;
-      padding: 0.92rem 1.35rem;
-      font-weight: 700;
-      border: 1px solid transparent;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(44, 31, 20, 0.12);
-    }
-
-    .btn-primary {
-      background: var(--color-primary);
-      color: #fff;
-    }
-
-    .btn-outline {
-      background: transparent;
-      border-color: rgba(92, 61, 46, 0.3);
-      color: var(--color-primary);
-    }
-
-    .btn-accent {
-      background: var(--color-secondary);
-      color: var(--color-dark);
-    }
-
-    .section--hero {
-      overflow: clip;
-    }
-
-    .hero-grid {
-      display: grid;
-      gap: 2rem;
-      align-items: center;
-      min-height: calc(100vh - 88px);
-      padding-top: 2rem;
-    }
-
-    .hero-copy {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 7vw, 5.8rem);
-      line-height: 0.95;
-      margin: 0 0 1.2rem;
-      max-width: 10ch;
-    }
-
-    .hero-title span {
-      color: var(--color-primary);
-      display: block;
-    }
-
-    .hero-copy p {
-      margin: 0 0 1.75rem;
-      max-width: 560px;
-      color: var(--color-muted);
-      font-size: 1.06rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-    }
-
-    .hero-stage {
-      position: relative;
-      min-height: 400px;
-    }
-
-    .hero-stage::before,
-    .hero-stage::after {
-      content: "";
-      position: absolute;
-      inset: auto auto 0 0;
-      width: 220px;
-      height: 220px;
-      border-radius: 32% 68% 48% 52% / 46% 34% 66% 54%;
-      background: var(--color-highlight-soft);
-      filter: blur(1px);
-    }
-
-    .hero-stage::after {
-      inset: 0 0 auto auto;
-      width: 280px;
-      height: 280px;
-      background:
-        radial-gradient(circle, color-mix(in srgb, var(--color-secondary) 32%, transparent) 1px, transparent 1px);
-      background-size: 16px 16px;
-      border-radius: 50%;
-    }
-
-    .card-stack {
-      position: absolute;
-      right: 0;
-      top: 1rem;
-      width: min(100%, 460px);
-    }
-
-    .stack-card {
-      position: relative;
-      background: rgba(255, 252, 247, 0.9);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(224, 213, 197, 0.9);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      padding: 1.2rem;
-    }
-
-    .stack-card+.stack-card {
-      margin-top: -2.4rem;
-      margin-left: 2.2rem;
-    }
-
-    .stack-card:nth-child(2) {
-      background: rgba(240, 232, 220, 0.96);
-    }
-
-    .stack-card:nth-child(3) {
-      background: var(--color-highlight-soft);
-    }
-
-    .stack-card small {
-      display: inline-block;
-      margin-bottom: 0.8rem;
-      color: var(--color-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.72rem;
-    }
-
-    .stack-card h3 {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: 1.55rem;
-    }
-
-    .stack-card p {
-      margin: 0.45rem 0 0;
-      color: var(--color-muted);
-    }
-
-    .marquee-strip {
-      background: var(--color-secondary);
-      color: var(--color-dark);
-      overflow: hidden;
-      white-space: nowrap;
-      border-block: 1px solid rgba(92, 61, 46, 0.12);
-    }
-
-    .marquee-track {
-      display: inline-flex;
-      min-width: 200%;
-      animation: marquee 22s linear infinite;
-      padding: 1rem 0;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .marquee-track span {
-      padding-right: 2rem;
-    }
-
-    @keyframes marquee {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    .about-grid,
-    .location-grid,
-    .contact-grid,
-    .footer-grid {
-      display: grid;
-      gap: 2rem;
-    }
-
-    .about-art {
-      min-height: 420px;
-      border-radius: 32px;
-      background:
-        linear-gradient(160deg, color-mix(in srgb, var(--color-primary) 94%, #000 6%), color-mix(in srgb, var(--color-accent) 88%, var(--color-primary) 12%)),
-        var(--color-primary);
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-card);
-      padding: 2rem;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .about-art::before,
-    .about-art::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(250, 246, 241, 0.12);
-    }
-
-    .about-art::before {
-      width: 280px;
-      height: 280px;
-      top: -70px;
-      right: -80px;
-    }
-
-    .about-art::after {
-      width: 190px;
-      height: 190px;
-      bottom: 1rem;
-      left: -50px;
-    }
-
-    .about-art-copy {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      max-width: 16rem;
-    }
-
-    .about-art-copy strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 2rem;
-      line-height: 1.05;
-      margin-bottom: 0.8rem;
-    }
-
-    .stats-row {
-      display: grid;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .stat-card {
-      background: #fff;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--color-border);
-      padding: 1.15rem;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .stat-card strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .menu-head {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .tab-row {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-      padding: 0.4rem;
-      border-radius: 999px;
-      border: 1px solid var(--color-border);
-      background: rgba(255, 255, 255, 0.65);
-      width: fit-content;
-    }
-
-    .tab-button {
-      border: 0;
-      background: transparent;
-      color: var(--color-muted);
-      padding: 0.7rem 1rem;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 700;
-      transition: background 0.2s ease, color 0.2s ease;
-    }
-
-    .tab-button.is-active {
-      background: var(--color-primary);
-      color: #fff;
-    }
-
-    .menu-grid,
-    .gallery-grid,
-    .testimonials-grid {
-      display: grid;
-      gap: 1.4rem;
-    }
-
-    .menu-card {
-      background: rgba(255, 255, 255, 0.78);
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid var(--color-border);
-      box-shadow: var(--shadow-soft);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .menu-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-card);
-    }
-
-    .menu-card[hidden] {
-      display: none;
-    }
-
-    .menu-swatch {
-      min-height: 108px;
-      padding: 1rem;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      color: #fff;
-    }
-
-    .menu-swatch.hot {
-      background: linear-gradient(135deg, #8b5e44, #c58b52);
-    }
-
-    .menu-swatch.cold {
-      background: linear-gradient(135deg, #527153, #9abb68);
-    }
-
-    .menu-swatch.new {
-      background: linear-gradient(135deg, #966441, #d4a853);
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      padding: 0.35rem 0.7rem;
-      background: rgba(255, 255, 255, 0.18);
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-    }
-
-    .menu-card-body {
-      padding: 1.2rem;
-    }
-
-    .menu-card-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: start;
-    }
-
-    .menu-card h3 {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-    }
-
-    .menu-card p {
-      margin: 0.7rem 0 1.1rem;
-      color: var(--color-muted);
-    }
-
-    .menu-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .menu-price {
-      font-weight: 700;
-      color: var(--color-primary);
-    }
-
-    .add-button {
-      width: 2.65rem;
-      height: 2.65rem;
-      border-radius: 50%;
-      border: 0;
-      background: var(--color-secondary);
-      color: var(--color-dark);
-      font-size: 1.3rem;
-      cursor: pointer;
-    }
-
-    .section--cold-press {
-      background:
-        radial-gradient(circle at top right, rgba(212, 168, 83, 0.18), transparent 20%),
-        var(--color-dark);
-      color: #fff;
-    }
-
-    .section--cold-press .eyebrow,
-    .section--cold-press .section-copy {
-      color: rgba(255, 255, 255, 0.72);
-    }
-
-    .feature-grid {
-      display: grid;
-      gap: 1.4rem;
-      margin-top: 2.5rem;
-    }
-
-    .feature-card {
-      border-radius: 28px;
-      padding: 2rem;
-      min-height: 280px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.24);
-    }
-
-    .feature-card.apple {
-      background: linear-gradient(180deg, #34503f, #24392d);
-    }
-
-    .feature-card.mango {
-      background: linear-gradient(180deg, #8a5728, #5f381a);
-    }
-
-    .feature-card .emoji {
-      font-size: 2.5rem;
-    }
-
-    .feature-card h3 {
-      margin: 0.8rem 0 0.5rem;
-      font-family: var(--font-display);
-      font-size: 2rem;
-      line-height: 1.2;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-    }
-
-    .feature-card p,
-    .feature-price {
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1.5rem;
-    }
-
-    .pill {
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 999px;
-      padding: 0.7rem 1rem;
-      color: rgba(255, 255, 255, 0.82);
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .gallery-grid {
-      margin-top: 2.2rem;
-    }
-
-    .gallery-card {
-      background: #fff;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--color-border);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .gallery-card figure {
-      margin: 0;
-    }
-
-    .gallery-card img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      background:
-        linear-gradient(135deg, rgba(92, 61, 46, 0.78), rgba(212, 168, 83, 0.72), rgba(122, 158, 110, 0.72));
-    }
-
-    .gallery-card figcaption {
-      padding: 0.95rem 1rem;
-      color: var(--color-muted);
-      font-size: 0.95rem;
-    }
-
-    .gallery-note {
-      margin-top: 1.1rem;
-      color: var(--color-muted);
-    }
-
-    .section--testimonials {
-      background: linear-gradient(180deg, rgba(240, 232, 220, 0.78), rgba(250, 246, 241, 0.98));
-    }
-
-    .testimonial-card {
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid var(--color-border);
-      border-radius: 22px;
-      padding: 1.5rem;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .stars {
-      color: var(--color-secondary);
-      letter-spacing: 0.14em;
-      font-size: 1rem;
-    }
-
-    .testimonial-card blockquote {
-      margin: 0.9rem 0 1.2rem;
-      color: var(--color-muted);
-      font-style: italic;
-    }
-
-    .person {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-    }
-
-    .avatar {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--color-primary);
-      color: #fff;
-      font-weight: 700;
-    }
-
-    .person strong {
-      display: block;
-    }
-
-    .person span {
-      color: var(--color-muted);
-      font-size: 0.92rem;
-    }
-
-    .info-card,
-    .contact-card {
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid var(--color-border);
-      border-radius: 24px;
-      padding: 1.6rem;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .info-list {
-      display: grid;
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-
-    .info-item strong {
-      display: block;
-      margin-bottom: 0.2rem;
-    }
-
-    .info-item span {
-      color: var(--color-muted);
-    }
-
-    .map-frame {
-      width: 100%;
-      height: 500px;
-      border-radius: var(--radius-md);
-      border: none;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .contact-grid {
-      align-items: start;
-    }
-
-    .contact-card form {
-      display: grid;
-      gap: 1rem;
-    }
-
-    label {
-      display: grid;
-      gap: 0.45rem;
-      font-weight: 700;
-      color: var(--color-primary);
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      width: 100%;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--color-border);
-      background: #fffdf9;
-      padding: 0.9rem 1rem;
-      color: var(--color-dark);
-      outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    textarea:focus {
-      border-color: var(--color-secondary);
-      box-shadow: 0 0 0 4px rgba(212, 168, 83, 0.18);
-    }
-
-    textarea {
-      min-height: 160px;
-      resize: vertical;
-    }
-
-    .form-success {
-      display: none;
-      margin-top: 1rem;
-      padding: 1rem 1.1rem;
-      border-radius: var(--radius-md);
-      background: rgba(122, 158, 110, 0.14);
-      color: #30513a;
-      border: 1px solid rgba(122, 158, 110, 0.24);
-    }
-
-    .form-success.is-visible {
-      display: block;
-    }
-
-    footer {
-      background: var(--color-dark);
-      color: rgba(255, 255, 255, 0.8);
-      padding: 4rem 0 1.25rem;
-    }
-
-    .footer-grid {
-      padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .footer-brand strong,
-    .footer-title {
-      font-family: var(--font-display);
-      color: #fff;
-    }
-
-    .footer-brand strong {
-      font-size: 1.8rem;
-      display: block;
-      margin-bottom: 0.7rem;
-    }
-
-    .footer-title {
-      font-size: 1.1rem;
-      margin: 0 0 0.8rem;
-    }
-
-    .footer-links,
-    .footer-contact {
-      display: grid;
-      gap: 0.7rem;
-      color: rgba(255, 255, 255, 0.72);
-    }
-
-    .footer-bottom {
-      width: min(100% - 2rem, var(--container));
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      padding-top: 1.2rem;
-      color: rgba(255, 255, 255, 0.56);
-      font-size: 0.95rem;
-    }
-
-    .footer-bottom em {
-      font-style: italic;
-    }
-
-    .whatsapp-fab {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 9999;
-    }
-
-    .whatsapp-fab a {
-      position: relative;
-      width: 62px;
-      height: 62px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: #25d366;
-      color: #fff;
-      box-shadow: 0 16px 28px rgba(37, 211, 102, 0.3);
-      transition: transform 0.2s ease;
-    }
-
-    .whatsapp-fab a:hover {
-      transform: scale(1.06);
-    }
-
-    .whatsapp-fab a::before {
-      content: "";
-      position: absolute;
-      inset: -8px;
-      border-radius: 50%;
-      border: 1px solid rgba(37, 211, 102, 0.38);
-      animation: pulse 2.2s ease-out infinite;
-    }
-
-    .whatsapp-fab a::after {
-      content: attr(aria-label);
-      position: absolute;
-      right: calc(100% + 12px);
-      top: 50%;
-      transform: translateY(-50%);
-      white-space: nowrap;
-      background: var(--color-dark);
-      color: #fff;
-      padding: 0.55rem 0.8rem;
-      border-radius: 999px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease;
-      font-size: 0.88rem;
-    }
-
-    .whatsapp-fab a:hover::after {
-      opacity: 1;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(0.9);
-        opacity: 1;
-      }
-
-      100% {
-        transform: scale(1.35);
-        opacity: 0;
-      }
-    }
-
-    @media (min-width: 768px) {
-      .nav-links {
-        display: inline-flex;
-      }
-
-      .hero-grid,
-      .about-grid,
-      .location-grid,
-      .contact-grid,
-      .footer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .menu-grid,
-      .gallery-grid,
-      .testimonials-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .stats-row {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .feature-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .footer-grid {
-        grid-template-columns: 1.4fr 0.8fr 0.9fr;
-      }
-
-      .footer-bottom {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .menu-head {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: end;
-      }
-
-      .menu-grid,
-      .gallery-grid,
-      .testimonials-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 767px) {
-      .nav-inner {
-        flex-wrap: wrap;
-      }
-
-      .nav-cta {
-        width: 100%;
-      }
-
-      .nav-cta .btn {
-        width: 100%;
-      }
-
-      .hero-stage {
-        min-height: 360px;
-      }
-
-      .card-stack {
-        position: relative;
-        top: 0;
-      }
-
-      .stack-card+.stack-card {
-        margin-left: 1rem;
-      }
-
-      .whatsapp-fab a::after {
-        display: none;
-      }
-    }
-
-    @media (max-width: 460px) {
-      .feature-card h3 {
-        font-size: 1.6rem;
-      }
-
-      .whatsapp-fab {
-        right: 16px;
-        bottom: 16px;
-      }
-    }
-
-    @supports not (color: color-mix(in srgb, white, black)) {
-      .hero-stage::after {
-        background:
-          radial-gradient(circle, rgba(255, 204, 0, 0.22) 1px, transparent 1px);
-        background-size: 16px 16px;
-      }
-
-      .about-art {
-        background: linear-gradient(160deg, var(--color-primary), var(--color-accent)), var(--color-primary);
-      }
-    }
-  </style>
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 
-<body>
-  <nav class="site-nav" id="top">
-    <div class="nav-inner">
-      <a class="brand-lockup" href="#home" aria-label="Graffitea home">
-        <strong>Graffitea</strong>
-        <span>Tea &amp; Cold Press Juice</span>
-      </a>
-      <div class="nav-links" aria-label="Primary navigation">
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#cold-press">Shop</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="nav-cta">
-        <a class="btn btn-accent" href="#location">Find Us</a>
+<body class="overflow-x-hidden bg-teaBlue font-body text-white antialiased lg:h-screen lg:overflow-hidden">
+  <div
+    class="relative isolate min-h-screen overflow-hidden bg-[linear-gradient(180deg,_#0c96d8_0%,_#087bb4_58%,_#076c9d_100%)] lg:h-screen">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute -left-16 top-20 h-44 w-44 rounded-full bg-white/14 blur-3xl"></div>
+      <div class="absolute right-[-3rem] top-10 h-52 w-52 rounded-full bg-teaYellow/20 blur-3xl"></div>
+      <div class="absolute bottom-16 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-cyan-200/10 blur-3xl"></div>
+    </div>
+
+    <main class="relative z-10 lg:hidden">
+      <header class="px-4 pt-4 sm:px-6">
+        <div
+          class="mx-auto max-w-6xl rounded-[1.75rem] border border-white/20 bg-white/12 px-4 py-4 shadow-glow backdrop-blur-xl sm:px-6">
+          <div class="flex flex-col gap-4">
+            <div>
+              <a href="#mobile-top"
+                class="font-display text-2xl font-extrabold tracking-tight text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark sm:text-3xl">
+                Graffitea
+              </a>
+              <p class="mt-1 text-sm text-white/78">Local tea shop &amp; hangout place</p>
+            </div>
+            <nav aria-label="Primary" class="flex flex-wrap gap-2 text-sm font-semibold text-white/92">
+              <a href="#mobile-shop"
+                class="rounded-full bg-white/8 px-4 py-2 transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                Shop
+              </a>
+              <a href="#mobile-menu"
+                class="rounded-full bg-white/8 px-4 py-2 transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                Menu
+              </a>
+              <a href="#mobile-rides"
+                class="rounded-full bg-white/8 px-4 py-2 transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                Rides
+              </a>
+              <button type="button" data-modal-open="gallery-modal"
+                class="rounded-full bg-white/8 px-4 py-2 text-left transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                Gallery
+              </button>
+              <button type="button" data-modal-open="contact-modal"
+                class="rounded-full bg-white/8 px-4 py-2 text-left transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                Contact
+              </button>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <section id="mobile-top" class="px-4 pb-10 pt-6 sm:px-6">
+        <div class="mx-auto max-w-6xl">
+          <article
+            class="rounded-[2rem] border border-white/20 bg-white/10 px-5 py-8 shadow-glow backdrop-blur-xl sm:px-8 sm:py-10">
+            <p
+              class="inline-flex items-center rounded-full border border-white/20 bg-white/14 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.26em] text-teaMist shadow-card backdrop-blur">
+              Tea · Trails · Community
+            </p>
+            <div class="mt-5 overflow-hidden rounded-full border border-white/16 bg-white/8 py-2">
+              <div
+                class="flex w-max animate-marquee whitespace-nowrap text-xs font-bold uppercase tracking-[0.28em] text-teaYellow">
+                <span class="px-4">offer.ride.giveaway.</span>
+                <span class="px-4">offer.ride.giveaway.</span>
+                <span class="px-4">offer.ride.giveaway.</span>
+                <span class="px-4">offer.ride.giveaway.</span>
+                <span class="px-4">offer.ride.giveaway.</span>
+                <span class="px-4">offer.ride.giveaway.</span>
+              </div>
+            </div>
+            <h1
+              class="mt-6 max-w-[10ch] font-display text-4xl font-extrabold leading-[0.92] text-white sm:max-w-[12ch] sm:text-5xl">
+              offer<span class="text-teaYellow">.</span><wbr />ride<span
+                class="text-teaYellow">.</span><wbr />giveaway<span class="text-teaYellow">.</span>
+            </h1>
+            <p class="mt-5 max-w-2xl text-sm leading-7 text-white/84 sm:text-base">
+              A neighborhood tea stop for cold presses, masala tea, local products, and weekend rides across Nepal.
+            </p>
+            <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a href="#mobile-menu"
+                class="inline-flex min-h-12 items-center justify-center rounded-full bg-teaYellow px-6 py-3 text-sm font-extrabold text-teaInk shadow-card transition hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                Explore the menu
+              </a>
+              <a href="#mobile-rides"
+                class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/24 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                View upcoming rides
+              </a>
+            </div>
+          </article>
+
+          <section class="mt-6 grid gap-4">
+            <article id="mobile-shop"
+              class="rounded-[2rem] border border-white/35 bg-white/92 p-5 text-teaInk shadow-card">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teaBlueDark/70">Local shelf</p>
+                  <h2 class="mt-2 font-display text-2xl font-bold">Shop</h2>
+                </div>
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-teaYellow text-teaInk">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 9V7a6 6 0 0 1 12 0v2" />
+                    <path d="M4 9h16l-1 10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 9Z" />
+                  </svg>
+                </span>
+              </div>
+              <ul class="mt-5 space-y-3 text-sm font-medium text-teaInk/82">
+                <li class="rounded-2xl bg-teaCream px-4 py-3">Pickle</li>
+                <li class="rounded-2xl bg-teaCream px-4 py-3">Titaura</li>
+                <li class="rounded-2xl bg-teaCream px-4 py-3">Fruit powder</li>
+                <li class="rounded-2xl bg-teaCream px-4 py-3">Cold press</li>
+              </ul>
+            </article>
+
+            <article id="mobile-menu"
+              class="rounded-[2rem] border border-white/35 bg-white/92 p-5 text-teaInk shadow-card">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teaBlueDark/70">Counter favorites</p>
+                  <h2 class="mt-2 font-display text-2xl font-bold">Menu</h2>
+                </div>
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-teaYellow text-teaInk">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 10h11a4 4 0 0 1 0 8H9a5 5 0 0 1-5-5v-3Z" />
+                    <path d="M15 10h1a3 3 0 1 1 0 6h-1" />
+                    <path d="M7 4v3" />
+                    <path d="M10 4v3" />
+                    <path d="M13 4v3" />
+                  </svg>
+                </span>
+              </div>
+              <ul class="mt-5 space-y-3 text-sm font-medium text-teaInk/82">
+                <li class="rounded-2xl bg-teaCream px-4 py-3">Masala tea</li>
+                <li class="rounded-2xl bg-teaCream px-4 py-3">Lemon tea</li>
+                <li class="rounded-2xl bg-teaCream px-4 py-3">Coffee</li>
+                <li class="rounded-2xl bg-teaCream px-4 py-3">Seasonal specials</li>
+              </ul>
+            </article>
+
+            <article id="mobile-rides"
+              class="rounded-[2rem] border border-white/35 bg-white/92 p-5 text-teaInk shadow-card">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teaBlueDark/70">2026 ride calendar
+                  </p>
+                  <h2 class="mt-2 font-display text-2xl font-bold">Ride</h2>
+                </div>
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-teaYellow text-teaInk">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="6.5" cy="17.5" r="3.5" />
+                    <circle cx="17.5" cy="17.5" r="3.5" />
+                    <path d="M10 17.5h4l-3-8h4" />
+                    <path d="M8.5 10h2.5" />
+                  </svg>
+                </span>
+              </div>
+              <dl class="mt-5 space-y-3 text-sm text-teaInk/82">
+                <div class="flex items-center justify-between gap-4 rounded-2xl bg-teaCream px-4 py-3">
+                  <dt class="font-semibold">June</dt>
+                  <dd>Nuwakot</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4 rounded-2xl bg-teaCream px-4 py-3">
+                  <dt class="font-semibold">July</dt>
+                  <dd>Mustang</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4 rounded-2xl bg-teaCream px-4 py-3">
+                  <dt class="font-semibold">August</dt>
+                  <dd>Manang</dd>
+                </div>
+              </dl>
+            </article>
+          </section>
+
+          <section class="mt-6 rounded-[2rem] bg-teaBlueDark/95 px-5 py-6 shadow-glow">
+            <p class="text-xs font-bold uppercase tracking-[0.24em] text-teaYellow">Join the community</p>
+            <h2 class="mt-2 max-w-md font-display text-2xl font-bold text-white">
+              Sign up for ride alerts and giveaways.
+            </h2>
+            <div class="mt-5 flex flex-col items-stretch gap-3">
+              <button type="button" data-modal-open="contact-modal"
+                class="inline-flex min-h-12 min-w-[14rem] items-center justify-center gap-2 rounded-full bg-teaYellow px-5 py-3 text-sm font-extrabold text-teaInk transition hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <svg viewBox="0 0 24 24" class="h-5 w-6" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 6h16v12H4z" />
+                  <path d="m4 8 8 6 8-6" />
+                </svg>
+                Contact us
+              </button>
+              <a href="#"
+                class="inline-flex min-h-12 min-w-[14rem] items-center justify-center gap-2 rounded-full border border-white/24 bg-white/8 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <svg viewBox="0 0 24 24" class="h-5 w-6" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 21s6-4.8 6-10a6 6 0 1 0-12 0c0 5.2 6 10 6 10Z" />
+                  <circle cx="12" cy="11" r="2.5" />
+                </svg>
+                Find the shop
+              </a>
+            </div>
+          </section>
+
+          <footer
+            class="flex flex-col gap-3 px-1 pb-2 pt-6 text-sm text-white/78 sm:flex-row sm:items-center sm:justify-between">
+            <p>© 2026 Graffitea. Tea, trails, and good company.</p>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="#" aria-label="Instagram"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/18 bg-white/10 transition hover:text-teaYellow hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Facebook"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/18 bg-white/10 transition hover:text-teaYellow hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M15 8h-2a2 2 0 0 0-2 2v2h4l-.5 4H11v5" />
+                  <path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Z" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Location"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/18 bg-white/10 transition hover:text-teaYellow hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 21s6-4.8 6-10a6 6 0 1 0-12 0c0 5.2 6 10 6 10Z" />
+                  <circle cx="12" cy="11" r="2.5" />
+                </svg>
+              </a>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <div class="relative z-10 hidden h-screen flex-col lg:flex">
+      <header class="shrink-0 px-6 pb-4 pt-4 xl:px-8">
+        <div
+          class="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-[1.9rem] border border-white/20 bg-white/12 px-6 py-4 shadow-glow backdrop-blur-xl">
+          <div class="min-w-0">
+            <button type="button" data-panel-button="home"
+              class="panel-trigger font-display text-3xl font-extrabold tracking-tight text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              Graffitea
+            </button>
+            <p class="mt-1 text-sm text-white/78">Local tea shop &amp; hangout place</p>
+          </div>
+
+          <nav aria-label="Primary" class="flex flex-wrap items-center gap-2 text-sm font-semibold text-white/92">
+            <button type="button" data-panel-button="shop" data-panel-nav
+              class="panel-trigger rounded-full bg-white/8 px-4 py-2 transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              Shop
+            </button>
+            <button type="button" data-panel-button="menu" data-panel-nav
+              class="panel-trigger rounded-full bg-white/8 px-4 py-2 transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              Menu
+            </button>
+            <button type="button" data-panel-button="rides" data-panel-nav
+              class="panel-trigger rounded-full bg-white/8 px-4 py-2 transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              Rides
+            </button>
+            <button type="button" data-modal-open="gallery-modal"
+              class="rounded-full bg-white/8 px-4 py-2 transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              Gallery
+            </button>
+            <button type="button" data-modal-open="contact-modal"
+              class="rounded-full bg-white/8 px-4 py-2 transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              Contact
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <div
+        class="mx-auto grid h-full min-h-0 w-full max-w-7xl flex-1 grid-cols-[minmax(0,1.08fr)_minmax(24rem,0.92fr)] gap-5 px-6 pb-6 xl:px-8">
+        <section
+          class="flex min-h-0 flex-col rounded-[2rem] border border-white/18 bg-white/10 p-8 shadow-glow backdrop-blur-xl xl:p-10">
+          <div class="max-w-2xl">
+            <p
+              class="inline-flex items-center rounded-full border border-white/20 bg-white/14 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-teaMist shadow-card backdrop-blur">
+              Tea · Trails · Community
+            </p>
+            <h1
+              class="mt-6 max-w-[9ch] font-display text-5xl font-extrabold leading-[0.88] text-white xl:max-w-[10ch] xl:text-6xl 2xl:text-7xl">
+              offer<span class="text-teaYellow">.</span><wbr />ride<span
+                class="text-teaYellow">.</span><wbr />giveaway<span class="text-teaYellow">.</span>
+            </h1>
+            <p class="mt-5 max-w-xl text-base leading-7 text-white/82 xl:text-lg">
+              A neighborhood tea stop for cold presses, masala tea, local products, and weekend rides across Nepal.
+            </p>
+          </div>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <button type="button" data-panel-button="menu"
+              class="panel-trigger inline-flex min-h-12 items-center justify-center rounded-full bg-teaYellow px-6 py-3 text-sm font-extrabold text-teaInk shadow-card transition hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              Explore the menu
+            </button>
+            <button type="button" data-panel-button="rides"
+              class="panel-trigger inline-flex min-h-12 items-center justify-center rounded-full border border-white/24 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              View upcoming rides
+            </button>
+            <button type="button" data-modal-open="gallery-modal"
+              class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/24 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              Open gallery
+            </button>
+          </div>
+
+          <div class="mt-8 grid gap-3 sm:grid-cols-3">
+            <article class="rounded-[1.6rem] border border-white/16 bg-white/8 p-4">
+              <p class="text-[0.7rem] font-semibold uppercase tracking-[0.26em] text-teaMist/78">Pour</p>
+              <p class="mt-2 text-2xl font-extrabold text-white">Cold press</p>
+              <p class="mt-1 text-sm text-white/64">Fruit bottles and quick chill stops.</p>
+            </article>
+            <article class="rounded-[1.6rem] border border-white/16 bg-white/8 p-4">
+              <p class="text-[0.7rem] font-semibold uppercase tracking-[0.26em] text-teaMist/78">Counter</p>
+              <p class="mt-2 text-2xl font-extrabold text-white">Masala tea</p>
+              <p class="mt-1 text-sm text-white/64">Daily pours, lemon tea, and coffee.</p>
+            </article>
+            <article class="rounded-[1.6rem] border border-white/16 bg-white/8 p-4">
+              <p class="text-[0.7rem] font-semibold uppercase tracking-[0.26em] text-teaMist/78">Ride</p>
+              <p class="mt-2 text-2xl font-extrabold text-white">2026 routes</p>
+              <p class="mt-1 text-sm text-white/64">Nuwakot, Mustang, and Manang.</p>
+            </article>
+          </div>
+
+          <div class="mt-auto overflow-hidden rounded-full border border-white/16 bg-white/8 py-2">
+            <div
+              class="flex w-max animate-marquee whitespace-nowrap text-sm font-black uppercase tracking-[0.3em] text-teaYellow">
+              <span class="px-5">offer.ride.giveaway.</span>
+              <span class="px-5">offer.ride.giveaway.</span>
+              <span class="px-5">offer.ride.giveaway.</span>
+              <span class="px-5">offer.ride.giveaway.</span>
+              <span class="px-5">offer.ride.giveaway.</span>
+              <span class="px-5">offer.ride.giveaway.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="flex min-h-0 flex-col gap-4">
+          <div class="grid grid-cols-3 gap-3">
+            <button type="button" data-panel-button="shop"
+              class="panel-card-trigger rounded-[1.65rem] border border-white/18 bg-white/18 p-4 text-left text-white shadow-card transition hover:-translate-y-0.5 hover:bg-white/24 hover:shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-teaBlueDark/68">Shop</p>
+                  <p class="mt-2 font-display text-xl font-bold">Shelf picks</p>
+                </div>
+                <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-teaYellow text-teaInk">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 9V7a6 6 0 0 1 12 0v2" />
+                    <path d="M4 9h16l-1 10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 9Z" />
+                  </svg>
+                </span>
+              </div>
+            </button>
+            <button type="button" data-panel-button="menu"
+              class="panel-card-trigger rounded-[1.65rem] border border-white/18 bg-white/18 p-4 text-left text-white shadow-card transition hover:-translate-y-0.5 hover:bg-white/24 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/70">Menu</p>
+                  <p class="mt-2 font-display text-xl font-bold">Tea board</p>
+                </div>
+                <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-teaYellow text-teaInk">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 10h11a4 4 0 0 1 0 8H9a5 5 0 0 1-5-5v-3Z" />
+                    <path d="M15 10h1a3 3 0 1 1 0 6h-1" />
+                    <path d="M7 4v3" />
+                    <path d="M10 4v3" />
+                    <path d="M13 4v3" />
+                  </svg>
+                </span>
+              </div>
+            </button>
+            <button type="button" data-panel-button="rides"
+              class="panel-card-trigger rounded-[1.65rem] border border-white/18 bg-white/18 p-4 text-left text-white shadow-card transition hover:-translate-y-0.5 hover:bg-white/24 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/70">Ride</p>
+                  <p class="mt-2 font-display text-xl font-bold">Route list</p>
+                </div>
+                <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-teaYellow text-teaInk">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="6.5" cy="17.5" r="3.5" />
+                    <circle cx="17.5" cy="17.5" r="3.5" />
+                    <path d="M10 17.5h4l-3-8h4" />
+                    <path d="M8.5 10h2.5" />
+                  </svg>
+                </span>
+              </div>
+            </button>
+          </div>
+
+          <article
+            class="flex min-h-0 flex-1 flex-col rounded-[2rem] border border-white/18 bg-[#0a74aa]/80 p-6 shadow-glow backdrop-blur-xl">
+            <div id="panel-home" data-panel class="hidden h-full flex-col justify-center text-center text-white">
+              <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teaYellow/78">Graffitea overview</p>
+              <h2 class="mt-3 font-display text-4xl font-bold">Tea, routes, and local counter energy.</h2>
+              <p class="mx-auto mt-4 max-w-md text-base leading-7 text-white/78">
+                Use the navigation to switch between shelf items, menu favorites, and ride dates without leaving the
+                screen.
+              </p>
+            </div>
+
+            <div id="panel-shop" data-panel class="flex h-full flex-col text-white">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teaYellow/78">Shop</p>
+                  <h2 class="mt-2 font-display text-3xl font-bold">Local products for take-home stops.</h2>
+                </div>
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-teaYellow text-teaInk">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 9V7a6 6 0 0 1 12 0v2" />
+                    <path d="M4 9h16l-1 10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 9Z" />
+                  </svg>
+                </span>
+              </div>
+              <p class="mt-4 text-sm leading-6 text-white/76">Restock local favorites after tea or before rolling out
+                for the weekend.</p>
+              <ul class="mt-5 grid gap-3 text-sm sm:grid-cols-2">
+                <li class="rounded-[1.4rem] border border-white/14 bg-white/10 px-4 py-4">Pickle</li>
+                <li class="rounded-[1.4rem] border border-white/14 bg-white/10 px-4 py-4">Titaura</li>
+                <li class="rounded-[1.4rem] border border-white/14 bg-white/10 px-4 py-4">Fruit powder</li>
+                <li class="rounded-[1.4rem] border border-white/14 bg-white/10 px-4 py-4">Cold press</li>
+              </ul>
+            </div>
+
+            <div id="panel-menu" data-panel class="hidden h-full flex-col text-white">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teaYellow/78">Menu</p>
+                  <h2 class="mt-2 font-display text-3xl font-bold">Daily pours and quick counter favorites.</h2>
+                </div>
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-teaYellow text-teaInk">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 10h11a4 4 0 0 1 0 8H9a5 5 0 0 1-5-5v-3Z" />
+                    <path d="M15 10h1a3 3 0 1 1 0 6h-1" />
+                    <path d="M7 4v3" />
+                    <path d="M10 4v3" />
+                    <path d="M13 4v3" />
+                  </svg>
+                </span>
+              </div>
+              <p class="mt-4 text-sm leading-6 text-white/76">A compact tea board built for regulars, quick breaks, and
+                afternoon catch-ups.</p>
+              <ul class="mt-5 grid gap-3 text-sm sm:grid-cols-2">
+                <li class="rounded-[1.4rem] border border-white/14 bg-white/10 px-4 py-4">Masala tea</li>
+                <li class="rounded-[1.4rem] border border-white/14 bg-white/10 px-4 py-4">Lemon tea</li>
+                <li class="rounded-[1.4rem] border border-white/14 bg-white/10 px-4 py-4">Coffee</li>
+                <li class="rounded-[1.4rem] border border-white/14 bg-white/10 px-4 py-4">Seasonal specials</li>
+              </ul>
+            </div>
+
+            <div id="panel-rides" data-panel class="hidden h-full flex-col text-white">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teaYellow/78">Ride</p>
+                  <h2 class="mt-2 font-display text-3xl font-bold">Weekend routes across Nepal.</h2>
+                </div>
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-teaYellow text-teaInk">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="6.5" cy="17.5" r="3.5" />
+                    <circle cx="17.5" cy="17.5" r="3.5" />
+                    <path d="M10 17.5h4l-3-8h4" />
+                    <path d="M8.5 10h2.5" />
+                  </svg>
+                </span>
+              </div>
+              <p class="mt-4 text-sm leading-6 text-white/76">Sign up early for monthly meetup rides, product drops, and
+                giveaway announcements.</p>
+              <dl class="mt-5 space-y-3 text-sm">
+                <div
+                  class="flex items-center justify-between rounded-[1.4rem] border border-white/14 bg-white/10 px-4 py-4">
+                  <dt class="font-semibold">June</dt>
+                  <dd>Nuwakot</dd>
+                </div>
+                <div
+                  class="flex items-center justify-between rounded-[1.4rem] border border-white/14 bg-white/10 px-4 py-4">
+                  <dt class="font-semibold">July</dt>
+                  <dd>Mustang</dd>
+                </div>
+                <div
+                  class="flex items-center justify-between rounded-[1.4rem] border border-white/14 bg-white/10 px-4 py-4">
+                  <dt class="font-semibold">August</dt>
+                  <dd>Manang</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <section class="rounded-[1.8rem] bg-teaBlueDark/95 px-5 py-5 shadow-card">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <p class="text-xs font-bold uppercase tracking-[0.24em] text-teaYellow">Join the community</p>
+                <h2 class="mt-2 font-display text-2xl font-bold text-white">Sign up for ride alerts and giveaways.</h2>
+              </div>
+              <div class="flex flex-col items-stretch gap-3">
+                <button type="button" data-modal-open="contact-modal"
+                  class="inline-flex min-h-12 min-w-[14rem] items-center justify-center gap-2 rounded-full bg-teaYellow px-5 py-3 text-sm font-extrabold text-teaInk transition hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 6h16v12H4z" />
+                    <path d="m4 8 8 6 8-6" />
+                  </svg>
+                  Contact us
+                </button>
+                <a href="#"
+                  class="inline-flex min-h-12 min-w-[14rem] items-center justify-center gap-2 rounded-full border border-white/24 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 21s6-4.8 6-10a6 6 0 1 0-12 0c0 5.2 6 10 6 10Z" />
+                    <circle cx="12" cy="11" r="2.5" />
+                  </svg>
+                  Find the shop
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <footer
+            class="flex items-center justify-between gap-3 rounded-[1.7rem] border border-white/14 bg-white/8 px-5 py-4 text-sm text-white/78 backdrop-blur">
+            <p>© 2026 Graffitea. Tea, trails, and good company.</p>
+            <div class="flex items-center gap-3">
+              <a href="#" aria-label="Instagram"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/18 bg-white/10 transition hover:text-teaYellow hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Facebook"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/18 bg-white/10 transition hover:text-teaYellow hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M15 8h-2a2 2 0 0 0-2 2v2h4l-.5 4H11v5" />
+                  <path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Z" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Location"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/18 bg-white/10 transition hover:text-teaYellow hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 21s6-4.8 6-10a6 6 0 1 0-12 0c0 5.2 6 10 6 10Z" />
+                  <circle cx="12" cy="11" r="2.5" />
+                </svg>
+              </a>
+            </div>
+          </footer>
+        </section>
       </div>
     </div>
-  </nav>
 
-  <main>
-    <section class="section--hero section-shell" id="home">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Local Favourite in Aloknagar</div>
-          <h1 class="hero-title">
-            Brewed with heart,
-            <span>pressed with care.</span>
-          </h1>
-          <p>
-            Graffitea is a warm neighbourhood stop in Aloknagar, Kathmandu for comforting teas,
-            small-batch cold press juices, and the kind of everyday hospitality that keeps people coming back.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#menu">Explore Menu</a>
-            <a class="btn btn-outline" href="#about">Our Story</a>
-          </div>
-        </div>
-        <div class="hero-stage" aria-hidden="true">
-          <div class="card-stack">
-            <article class="stack-card">
-              <small>Signature Pour</small>
-              <h3>Masala Milk Tea</h3>
-              <p>Rs 40 / cup</p>
-            </article>
-            <article class="stack-card">
-              <small>Cold Press Pick</small>
-              <h3>From Local Farm of Nepal</h3>
-              <p>250ml pet bottle</p>
-            </article>
-            <article class="stack-card">
-              <small>Season Favourite</small>
-              <h3>Mango Cold Press</h3>
-              <p>250ml pet bottle</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section--marquee" id="marquee" aria-label="Highlights">
-      <div class="marquee-strip">
-        <div class="marquee-track">
-          <span>Fresh Cold Press Juices · Handcrafted Teas · No Preservatives · Made in Kathmandu · Zero Added Sugar ·
-            Apple &amp; Mango Cold Press ·</span>
-          <span>Fresh Cold Press Juices · Handcrafted Teas · No Preservatives · Made in Kathmandu · Zero Added Sugar ·
-            Apple &amp; Mango Cold Press ·</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section--about section-shell" id="about">
-      <div class="container about-grid">
-        <div class="about-art">
-          <div class="about-art-copy">
-            <strong>Freshly steeped. Freshly pressed.</strong>
-            <p>Made with a local spirit, calm corners, and everyday rituals worth slowing down for.</p>
-          </div>
-        </div>
-        <div>
-          <div class="eyebrow">Who We Are</div>
-          <h2 class="section-title">A Cozy Corner for Honest Drinks</h2>
-          <p class="section-copy">
-            Graffitea is a small local Kathmandu shop built around familiar comfort: fresh tea on the boil,
-            welcoming service, and drinks made with care rather than shortcuts.
-          </p>
-          <p class="section-copy" style="margin-top: 1rem;">
-            Every tea is brewed fresh daily, and every cold press juice is made in small batches with zero additives,
-            so what reaches your cup or bottle stays simple, clean, and true to the ingredients.
-          </p>
-          <div class="stats-row">
-            <article class="stat-card">
-              <strong>5+</strong>
-              <span>Tea Varieties</span>
-            </article>
-            <article class="stat-card">
-              <strong>2</strong>
-              <span>Cold Press Flavours</span>
-            </article>
-            <article class="stat-card">
-              <strong>0</strong>
-              <span>Preservatives</span>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section--menu section-shell" id="menu">
-      <div class="container">
-        <div class="menu-head">
+    <div id="gallery-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-3 backdrop-blur-sm sm:p-4">
+      <div
+        class="flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-[2rem] border border-white/16 bg-[#0a6d9f]/96 shadow-glow">
+        <div class="flex items-center justify-between gap-4 border-b border-white/12 px-5 py-4 sm:px-6">
           <div>
-            <div class="eyebrow">Our Menu</div>
-            <h2 class="section-title">Tea for the slow moments, juice for the bright ones.</h2>
+            <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teaYellow/78">Gallery</p>
+            <h2 class="mt-1 font-display text-2xl font-bold text-white">Shop moments, counter pours, and ride previews
+            </h2>
           </div>
-          <div class="tab-row" role="tablist" aria-label="Menu categories">
-            <button class="tab-button is-active" type="button" role="tab" aria-selected="true"
-              data-filter="all">All</button>
-            <button class="tab-button" type="button" role="tab" aria-selected="false" data-filter="hot">Hot
-              Teas</button>
-            <button class="tab-button" type="button" role="tab" aria-selected="false" data-filter="cold">Cold
-              Press</button>
-          </div>
+          <button type="button" data-modal-close="gallery-modal"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/18 bg-white/10 text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark"
+            aria-label="Close gallery">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 6l12 12" />
+              <path d="M18 6 6 18" />
+            </svg>
+          </button>
         </div>
 
-        <div class="menu-grid">
-          <article class="menu-card" data-category="hot">
-            <div class="menu-swatch hot">
-              <span class="badge">Hot</span>
-            </div>
-            <div class="menu-card-body">
-              <div class="menu-card-top">
-                <h3>Masala Chiya</h3>
-              </div>
-              <p>Classic Nepali spiced milk tea with cardamom, ginger &amp; cloves.</p>
-              <div class="menu-meta">
-                <span class="menu-price">Rs 40 / cup</span>
-                <button class="add-button" type="button" aria-label="Add Masala Chiya">+</button>
-              </div>
-            </div>
-          </article>
+        <div class="grid min-h-0 flex-1 gap-4 p-4 sm:p-5 lg:grid-cols-[minmax(0,1fr)_18rem]">
+          <div class="flex min-h-0 flex-col gap-4">
+            <div
+              class="relative flex min-h-[18rem] flex-1 items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/14 bg-[#06263a] sm:min-h-[24rem]">
+              <img id="gallery-preview-image" src="assets/buff-pickle.png" alt="Graffitea gallery preview"
+                class="h-full w-full object-cover" />
+              <video id="gallery-preview-video" class="hidden h-full w-full object-cover" controls playsinline muted
+                loop></video>
 
-          <article class="menu-card" data-category="hot">
-            <div class="menu-swatch hot">
-              <span class="badge">Hot</span>
+              <button type="button" id="gallery-prev"
+                class="absolute left-3 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/16 bg-slate-950/48 text-white transition hover:bg-slate-950/68 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-[#06263a]"
+                aria-label="Previous media">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </button>
+              <button type="button" id="gallery-next"
+                class="absolute right-3 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/16 bg-slate-950/48 text-white transition hover:bg-slate-950/68 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-[#06263a]"
+                aria-label="Next media">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
             </div>
-            <div class="menu-card-body">
-              <div class="menu-card-top">
-                <h3>Green Tea</h3>
-              </div>
-              <p>Light Nepali high-altitude green tea.</p>
-              <div class="menu-meta">
-                <span class="menu-price">Rs 60 / cup</span>
-                <button class="add-button" type="button" aria-label="Add Green Tea">+</button>
-              </div>
-            </div>
-          </article>
 
-          <article class="menu-card" data-category="hot">
-            <div class="menu-swatch hot">
-              <span class="badge">Hot</span>
-            </div>
-            <div class="menu-card-body">
-              <div class="menu-card-top">
-                <h3>Tulsi Lemon Tea</h3>
+            <div class="rounded-[1.5rem] border border-white/14 bg-white/10 px-4 py-4 text-white backdrop-blur">
+              <div class="flex items-center justify-between gap-3">
+                <div>
+                  <p id="gallery-preview-type"
+                    class="text-xs font-semibold uppercase tracking-[0.24em] text-teaYellow/78">Image</p>
+                  <h3 id="gallery-preview-title" class="mt-2 font-display text-2xl font-bold">Buff pickle shelf drop
+                  </h3>
+                </div>
+                <span id="gallery-preview-count"
+                  class="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white/76">1 / 6</span>
               </div>
-              <p>Holy basil &amp; lemon immunity blend.</p>
-              <div class="menu-meta">
-                <span class="menu-price">Rs 55 / cup</span>
-                <button class="add-button" type="button" aria-label="Add Tulsi Lemon Tea">+</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-card" data-category="hot">
-            <div class="menu-swatch new">
-              <span class="badge">New</span>
-            </div>
-            <div class="menu-card-body">
-              <div class="menu-card-top">
-                <h3>Ginger Lemon Tea</h3>
-              </div>
-              <p>Fresh ginger, lemon, honey.</p>
-              <div class="menu-meta">
-                <span class="menu-price">Rs 50 / cup</span>
-                <button class="add-button" type="button" aria-label="Add Ginger Lemon Tea">+</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-card" data-category="cold">
-            <div class="menu-swatch cold">
-              <span class="badge">Cold Press</span>
-            </div>
-            <div class="menu-card-body">
-              <div class="menu-card-top">
-                <h3>Apple Cold Press</h3>
-              </div>
-              <p>Pure cold-pressed apple juice, no sugar added.</p>
-              <div class="menu-meta">
-                <span class="menu-price">Rs 180 / 250ml</span>
-                <button class="add-button" type="button" aria-label="Add Apple Cold Press">+</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="menu-card" data-category="cold">
-            <div class="menu-swatch cold">
-              <span class="badge">Cold Press</span>
-            </div>
-            <div class="menu-card-body">
-              <div class="menu-card-top">
-                <h3>Mango Cold Press</h3>
-              </div>
-              <p>100% pure mango, rich and naturally sweet.</p>
-              <div class="menu-meta">
-                <span class="menu-price">Rs 180 / 250ml</span>
-                <button class="add-button" type="button" aria-label="Add Mango Cold Press">+</button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section--cold-press section-shell" id="cold-press">
-      <div class="container">
-        <div class="eyebrow">Cold Press Spotlight</div>
-        <h2 class="section-title">Our Cold Press Juices</h2>
-        <p class="section-copy">
-          Two simple bottles, made with care: bright fruit, careful extraction, and nothing unnecessary added in.
-        </p>
-        <div class="feature-grid">
-          <article class="feature-card apple">
-            <div>
-              <div class="emoji" aria-hidden="true">🍏</div>
-              <h3>Pure Watermelon/Papaya/Pineapple</h3>
-              <p>Crisp, clean, and naturally refreshing with the taste left exactly where it belongs: in the fruit.</p>
-            </div>
-            <div class="feature-price">Rs ... / 250ml</div>
-          </article>
-          <article class="feature-card mango">
-            <div>
-              <div class="emoji" aria-hidden="true">🥭</div>
-              <h3>Pure Mango</h3>
-              <p>Rich, sunny, and naturally sweet, bottled as a smooth small-batch pour for an easy pick-me-up.</p>
-            </div>
-            <div class="feature-price">Rs ... / 250ml</div>
-          </article>
-        </div>
-        <div class="pill-row" aria-label="Cold press features">
-          <span class="pill">Zero Additives</span>
-          <span class="pill">Cold Pressed</span>
-          <span class="pill">Made in Nepal</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section--gallery section-shell" id="gallery">
-      <div class="container">
-        <div class="eyebrow">Gallery</div>
-        <h2 class="section-title">From Our Shop</h2>
-        <div class="gallery-grid">
-          <article class="gallery-card">
-            <figure>
-              <!-- EDIT: replace with your gallery image src -->
-              <img src="./assets/juju-dhau.png" alt="Juju Dhau">
-              <figcaption>Juju Dhau</figcaption>
-            </figure>
-          </article>
-          <article class="gallery-card">
-            <figure>
-              <!-- EDIT: replace with your gallery image src -->
-              <img src="./assets/mint-lemonde.png" alt="Mint Lemonade">
-              <figcaption>Mint Lemonade</figcaption>
-            </figure>
-          </article>
-          <article class="gallery-card">
-            <figure>
-              <!-- EDIT: replace with your gallery image src -->
-              <img src="./assets/cold-brew-coffee.png" alt="Cold Brew">
-              <figcaption>Cold Brew</figcaption>
-            </figure>
-          </article>
-          <article class="gallery-card">
-            <figure>
-              <!-- EDIT: replace with your gallery image src -->
-              <img src="./assets/buff-pickle.png" alt="Buff Pickle">
-              <figcaption>Buff Pickle</figcaption>
-            </figure>
-          </article>
-          <article class="gallery-card">
-            <figure>
-              <!-- EDIT: replace with your gallery image src -->
-              <img src="./assets/chicken-pickle.png" alt="Chicken Pickle">
-              <figcaption>Chicken Pickle</figcaption>
-            </figure>
-          </article>
-          <article class="gallery-card">
-            <figure>
-              <!-- EDIT: replace with your gallery image src -->
-              <img src="./assets/fruit-salad.png" alt="Fruits">
-              <figcaption>Fruits</figcaption>
-            </figure>
-          </article>
-        </div>
-        <p class="gallery-note">
-          Follow us on Instagram @graffitea
-          <!-- EDIT: replace with your Instagram handle -->
-        </p>
-      </div>
-    </section>
-
-    <section class="section--testimonials section-shell" id="testimonials">
-      <div class="container">
-        <div class="eyebrow">What Neighbours Say</div>
-        <h2 class="section-title">A local stop people settle into.</h2>
-        <div class="testimonials-grid">
-          <article class="testimonial-card">
-            <div class="stars" aria-label="Five star rating">★★★★★</div>
-            <blockquote>
-              "Their masala chiya tastes like the kind you hope for on a rainy Kathmandu morning.
-              Warm, balanced, and always consistent."
-            </blockquote>
-            <div class="person">
-              <div class="avatar">SP</div>
-              <div>
-                <strong>Sabina Poudel</strong>
-                <span>Aloknagar, Kathmandu</span>
-              </div>
-            </div>
-          </article>
-          <article class="testimonial-card">
-            <div class="stars" aria-label="Five star rating">★★★★★</div>
-            <blockquote>
-              "I stopped in for the apple cold press once and now it has become my regular afternoon pick.
-              It tastes clean and genuinely fresh."
-            </blockquote>
-            <div class="person">
-              <div class="avatar">RK</div>
-              <div>
-                <strong>Ritesh Karki</strong>
-                <span>New Baneshwor, Kathmandu</span>
-              </div>
-            </div>
-          </article>
-          <article class="testimonial-card">
-            <div class="stars" aria-label="Five star rating">★★★★★</div>
-            <blockquote>
-              "The place feels small in the best way. Friendly people, no fuss, and drinks that feel made with actual
-              care."
-            </blockquote>
-            <div class="person">
-              <div class="avatar">AM</div>
-              <div>
-                <strong>Anuja Maharjan</strong>
-                <span>Aloknagar, Kathmandu</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section--location section-shell" id="location">
-      <div class="container location-grid">
-        <div class="info-card">
-          <div class="eyebrow">Location &amp; Hours</div>
-          <h2 class="section-title">Come by for a cup or a bottle.</h2>
-          <div class="info-list">
-            <div class="info-item">
-              <strong>Address</strong>
-              <span>
-                Aloknagar, Kathmandu, Nepal
-                <!-- EDIT: replace with your business address detail -->
-              </span>
-            </div>
-            <div class="info-item">
-              <strong>Hours</strong>
-              <span>Mon-Sun: 7am-8pm</span>
-            </div>
-            <div class="info-item">
-              <strong>Phone</strong>
-              <span>
-                +977-1-XXXXXXX
-                <!-- EDIT: replace with your phone number -->
-              </span>
+              <p id="gallery-preview-description" class="mt-3 text-sm leading-6 text-white/76">
+                Small-batch shelf picks for quick take-home orders after tea.
+              </p>
             </div>
           </div>
-          <a class="btn btn-primary" href="https://maps.google.com/?q=Aloknagar,Kathmandu,Nepal" target="_blank"
-            rel="noreferrer">Get Directions</a>
-        </div>
-        <div>
-          <!-- EDIT: replace with your precise Google Maps embed URL if you have an exact pin -->
-          <iframe class="map-frame"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.077410853533!2d85.3402032761673!3d27.684002226519443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190068ff1365%3A0x36862686f241d186!2sGraffitea!5e0!3m2!1sen!2snp!4v1778434933430!5m2!1sen!2snp"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Graffitea location"></iframe>
+
+          <div class="min-h-0 overflow-y-auto pr-1">
+            <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              <button type="button" data-gallery-item data-type="image" data-src="assets/buff-pickle.png"
+                data-title="Buff pickle shelf drop"
+                data-description="Small-batch shelf picks for quick take-home orders after tea."
+                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <img src="assets/buff-pickle.png" alt="Buff pickle shelf drop"
+                  class="h-24 w-full rounded-[1rem] object-cover" />
+                <p class="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-teaYellow/78">Image</p>
+                <p class="mt-1 text-sm font-semibold">Buff pickle</p>
+              </button>
+
+              <button type="button" data-gallery-item data-type="image" data-src="assets/chicken-pickle.png"
+                data-title="Chicken pickle counter pack"
+                data-description="A richer local product line for snack bundles and shelf pickup."
+                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <img src="assets/chicken-pickle.png" alt="Chicken pickle counter pack"
+                  class="h-24 w-full rounded-[1rem] object-cover" />
+                <p class="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-teaYellow/78">Image</p>
+                <p class="mt-1 text-sm font-semibold">Chicken pickle</p>
+              </button>
+
+              <button type="button" data-gallery-item data-type="video" data-src="assets/cold-brew-loop.mp4"
+                data-poster="assets/cold-brew-coffee.png" data-title="Cold brew pour reel"
+                data-description="A short loop from the counter showing chilled coffee service and slow-pour detail."
+                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <div class="relative">
+                  <img src="assets/cold-brew-coffee.png" alt="Cold brew pour reel"
+                    class="h-24 w-full rounded-[1rem] object-cover" />
+                  <span
+                    class="absolute right-2 top-2 rounded-full bg-slate-950/65 px-2 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white">Video</span>
+                </div>
+                <p class="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-teaYellow/78">Video</p>
+                <p class="mt-1 text-sm font-semibold">Cold brew reel</p>
+              </button>
+
+              <button type="button" data-gallery-item data-type="image" data-src="assets/fruit-salad.png"
+                data-title="Fruit counter colors"
+                data-description="Fresh seasonal color for afternoon refreshment bundles and pickup trays."
+                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <img src="assets/fruit-salad.png" alt="Fruit counter colors"
+                  class="h-24 w-full rounded-[1rem] object-cover" />
+                <p class="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-teaYellow/78">Image</p>
+                <p class="mt-1 text-sm font-semibold">Fruit counter</p>
+              </button>
+
+              <button type="button" data-gallery-item data-type="video" data-src="assets/mint-lounge-loop.mp4"
+                data-poster="assets/mint-lemonde.png" data-title="Mint lemonade chill clip"
+                data-description="A quick motion loop built around one of the brighter cold counter pours."
+                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <div class="relative">
+                  <img src="assets/mint-lemonde.png" alt="Mint lemonade chill clip"
+                    class="h-24 w-full rounded-[1rem] object-cover" />
+                  <span
+                    class="absolute right-2 top-2 rounded-full bg-slate-950/65 px-2 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white">Video</span>
+                </div>
+                <p class="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-teaYellow/78">Video</p>
+                <p class="mt-1 text-sm font-semibold">Mint clip</p>
+              </button>
+
+              <button type="button" data-gallery-item data-type="image" data-src="assets/juju-dhau.png"
+                data-title="Sweet finish at the counter"
+                data-description="A soft dessert-side stop for tea sessions and weekend catch-ups."
+                class="gallery-thumb rounded-[1.35rem] border border-white/20 bg-white/10 p-2 text-left text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                <img src="assets/juju-dhau.png" alt="Sweet finish at the counter"
+                  class="h-24 w-full rounded-[1rem] object-cover" />
+                <p class="mt-2 text-xs font-semibold uppercase tracking-[0.22em] text-teaYellow/78">Image</p>
+                <p class="mt-1 text-sm font-semibold">Juju dhau</p>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="section--contact section-shell" id="contact">
-      <div class="container contact-grid">
-        <div>
-          <div class="eyebrow">Get In Touch</div>
-          <h2 class="section-title">Planning a visit, pickup, or quick question?</h2>
-          <p class="section-copy">
-            Send a note and the team will get back to you soon. Use the contact form for enquiries,
-            feedback, or simple order questions.
-          </p>
+    <div id="contact-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-3 backdrop-blur-sm sm:p-4">
+      <div class="w-full max-w-2xl overflow-hidden rounded-[2rem] border border-white/16 bg-[#0a6d9f]/96 shadow-glow">
+        <div class="flex items-center justify-between gap-4 border-b border-white/12 px-5 py-4 sm:px-6">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teaYellow/78">Contact us</p>
+            <h2 class="mt-1 font-display text-2xl font-bold text-white">Send a note to Graffitea</h2>
+          </div>
+          <button type="button" data-modal-close="contact-modal"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/18 bg-white/10 text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark"
+            aria-label="Close contact form">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 6l12 12" />
+              <path d="M18 6 6 18" />
+            </svg>
+          </button>
         </div>
-        <div class="contact-card">
-          <!-- EDIT: replace YOUR_FORMSPREE_ID with your ID from formspree.io -->
-          <form id="contact-form" action="https://formspree.io/f/xdabpplb" method="POST">
-            <input type="text" name="_gotcha" style="display:none">
-            <label>
-              Full Name
-              <input type="text" name="name" required>
+
+        <div class="px-5 py-5 sm:px-6 sm:py-6">
+
+          <form id="contact-form" action="https://sheetdb.io/api/v1/ss0msqcydjdpa" class="grid gap-4">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <label class="grid gap-2 text-sm font-semibold text-white">
+                Full name
+                <input type="text" name="data[full_name]" autocomplete="name" required
+                  class="min-h-12 rounded-2xl border border-white/18 bg-white/10 px-4 text-base font-medium text-white placeholder:text-white/45 focus:border-teaYellow focus:outline-none focus:ring-2 focus:ring-teaYellow/60" />
+              </label>
+              <label class="grid gap-2 text-sm font-semibold text-white">
+                Email
+                <input type="email" name="data[email]" autocomplete="email" required
+                  class="min-h-12 rounded-2xl border border-white/18 bg-white/10 px-4 text-base font-medium text-white placeholder:text-white/45 focus:border-teaYellow focus:outline-none focus:ring-2 focus:ring-teaYellow/60" />
+              </label>
+            </div>
+
+            <label class="grid gap-2 text-sm font-semibold text-white">
+              Contact number
+              <input type="tel" name="data[contact_number]" autocomplete="tel"
+                class="min-h-12 rounded-2xl border border-white/18 bg-white/10 px-4 text-base font-medium text-white placeholder:text-white/45 focus:border-teaYellow focus:outline-none focus:ring-2 focus:ring-teaYellow/60" />
             </label>
-            <label>
-              Email Address
-              <input type="email" name="email" required>
-            </label>
-            <label>
+
+            <label class="grid gap-2 text-sm font-semibold text-white">
               Message
-              <textarea name="message" required></textarea>
+              <textarea name="data[message]" rows="5" required
+                placeholder='your interest? ride to "destination" or any specific product'
+                class="rounded-[1.5rem] border border-white/18 bg-white/10 px-4 py-3 text-base font-medium text-white placeholder:text-white/45 focus:border-teaYellow focus:outline-none focus:ring-2 focus:ring-teaYellow/60"></textarea>
             </label>
-            <button class="btn btn-primary" type="submit">Send Message</button>
+
+            <label class="hidden" aria-hidden="true">
+              Company
+              <input type="text" name="company" tabindex="-1" autocomplete="off" />
+            </label>
+
+            <!-- <p class="text-xs leading-5 text-white/60">
+              Replace the placeholder SheetDB API URL on this form with your live SheetDB endpoint. Your Google Sheet
+              should use first-row columns named <code class="font-mono text-[0.7rem] text-white/80">full_name</code>,
+              <code class="font-mono text-[0.7rem] text-white/80">email</code>,
+              <code class="font-mono text-[0.7rem] text-white/80">contact_number</code>, and
+              <code class="font-mono text-[0.7rem] text-white/80">message</code>.
+            </p> -->
+
+            <div class="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
+              <p id="contact-form-status" class="hidden text-sm font-medium text-teaMist"></p>
+              <div class="flex flex-col gap-3 sm:ml-auto sm:flex-row">
+                <button type="button" data-modal-close="contact-modal"
+                  class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                  Cancel
+                </button>
+                <button type="submit"
+                  class="inline-flex min-h-12 items-center justify-center rounded-full bg-teaYellow px-6 py-3 text-sm font-extrabold text-teaInk transition hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
+                  <span data-submit-label>Send inquiry</span>
+                </button>
+              </div>
+            </div>
           </form>
-          <div class="form-success" id="form-success">Thanks! We'll be in touch soon ☕</div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <strong>Graffitea</strong>
-        <p>
-          A warm neighbourhood tea and cold press stop in Kathmandu, made for familiar rituals and bright everyday
-          refreshment.
-        </p>
-      </div>
-      <div>
-        <h3 class="footer-title">Quick Links</h3>
-        <div class="footer-links">
-          <a href="#home">Home</a>
-          <a href="#menu">Menu</a>
-          <a href="#about">About</a>
-          <a href="#location">Location</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-      <div>
-        <h3 class="footer-title">Contact Info</h3>
-        <div class="footer-contact">
-          <span>
-            Aloknagar, Kathmandu, Nepal
-            <!-- EDIT: replace with your business address detail -->
-          </span>
-          <span>
-            +977-1-XXXXXXX
-            <!-- EDIT: replace with your phone number -->
-          </span>
-          <a href="#contact">Message the team</a>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Graffitea. All rights reserved.</span>
-      <em>Made with love in Kathmandu</em>
-    </div>
-  </footer>
-
-  <div class="whatsapp-fab">
-    <!-- EDIT: replace with your WhatsApp number in international format e.g. 9779812345678 -->
-    <a href="https://wa.me/977XXXXXXXXXX" target="_blank" rel="noreferrer" aria-label="Chat with us on WhatsApp">
-      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="currentColor">
-        <path
-          d="M19.05 4.91A9.82 9.82 0 0 0 12.03 2C6.62 2 2.22 6.4 2.22 11.81c0 1.73.45 3.42 1.3 4.92L2 22l5.44-1.43a9.79 9.79 0 0 0 4.59 1.17h.01c5.41 0 9.81-4.4 9.81-9.81a9.75 9.75 0 0 0-2.8-7.02ZM12.04 20.1h-.01a8.14 8.14 0 0 1-4.15-1.14l-.3-.18-3.23.85.86-3.15-.2-.32a8.16 8.16 0 0 1-1.25-4.34 8.28 8.28 0 0 1 8.27-8.27 8.21 8.21 0 0 1 5.85 2.43 8.23 8.23 0 0 1 2.42 5.85 8.28 8.28 0 0 1-8.26 8.27Zm4.53-6.18c-.25-.12-1.49-.73-1.72-.81-.23-.09-.4-.12-.57.12-.17.25-.65.81-.8.98-.15.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.22-.74-.65-1.25-1.45-1.39-1.7-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.17-.24.25-.41.08-.17.04-.31-.02-.43-.06-.12-.57-1.38-.78-1.89-.21-.5-.42-.43-.57-.44l-.49-.01c-.17 0-.43.06-.66.31-.23.25-.86.84-.86 2.05 0 1.22.88 2.39 1.01 2.55.12.17 1.72 2.63 4.16 3.69.58.25 1.04.4 1.39.51.58.18 1.1.16 1.51.1.46-.07 1.49-.61 1.7-1.2.21-.59.21-1.1.15-1.2-.06-.1-.23-.16-.48-.29Z" />
-      </svg>
-    </a>
   </div>
 
   <script>
-    const nav = document.querySelector(".site-nav");
-    const navLinks = [...document.querySelectorAll(".nav-links a")];
-    const tabButtons = [...document.querySelectorAll(".tab-button")];
-    const menuCards = [...document.querySelectorAll(".menu-card")];
+    const panelButtons = document.querySelectorAll(".panel-trigger, .panel-card-trigger");
+    const panels = document.querySelectorAll("[data-panel]");
+    const navButtons = document.querySelectorAll("[data-panel-nav]");
+    const cardButtons = document.querySelectorAll(".panel-card-trigger");
+    const modalOpenButtons = document.querySelectorAll("[data-modal-open]");
+    const modalCloseButtons = document.querySelectorAll("[data-modal-close]");
+    const modals = document.querySelectorAll("#gallery-modal, #contact-modal");
+
+    const galleryModal = document.getElementById("gallery-modal");
+    const galleryItems = Array.from(document.querySelectorAll("[data-gallery-item]"));
+    const galleryPreviewImage = document.getElementById("gallery-preview-image");
+    const galleryPreviewVideo = document.getElementById("gallery-preview-video");
+    const galleryPreviewType = document.getElementById("gallery-preview-type");
+    const galleryPreviewTitle = document.getElementById("gallery-preview-title");
+    const galleryPreviewDescription = document.getElementById("gallery-preview-description");
+    const galleryPreviewCount = document.getElementById("gallery-preview-count");
+    const galleryPrev = document.getElementById("gallery-prev");
+    const galleryNext = document.getElementById("gallery-next");
+
     const contactForm = document.getElementById("contact-form");
-    const successMessage = document.getElementById("form-success");
+    const contactFormStatus = document.getElementById("contact-form-status");
+    const contactSubmitButton = contactForm.querySelector('button[type="submit"]');
+    const contactSubmitLabel = contactForm.querySelector("[data-submit-label]");
 
-    const setNavState = () => {
-      nav.classList.toggle("scrolled", window.scrollY > 12);
-    };
+    let currentMediaIndex = 0;
 
-    setNavState();
-    window.addEventListener("scroll", setNavState);
+    function setPanel(panelId) {
+      panels.forEach((panel) => {
+        const active = panel.id === `panel-${panelId}`;
+        panel.classList.toggle("hidden", !active);
+        panel.classList.toggle("flex", active);
+      });
 
-    tabButtons.forEach((button) => {
+      navButtons.forEach((button) => {
+        const active = button.dataset.panelButton === panelId;
+        button.classList.toggle("bg-teaYellow", active);
+        button.classList.toggle("text-teaInk", active);
+        button.classList.toggle("shadow-card", active);
+        button.classList.toggle("bg-white/8", !active);
+        button.classList.toggle("text-white", !active);
+      });
+
+      cardButtons.forEach((button) => {
+        const active = button.dataset.panelButton === panelId;
+        button.classList.toggle("bg-teaYellow", active);
+        button.classList.toggle("text-teaInk", active);
+        button.classList.toggle("border-transparent", active);
+        button.classList.toggle("shadow-card", active);
+        button.classList.toggle("bg-white/18", !active);
+        button.classList.toggle("text-white", !active);
+        button.classList.toggle("border-white/18", !active);
+        button.classList.toggle("shadow-none", !active);
+      });
+    }
+
+    function openModal(modalId) {
+      modals.forEach((modal) => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      });
+
+      const modal = document.getElementById(modalId);
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.classList.add("overflow-hidden");
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+
+      if (Array.from(modals).every((entry) => entry.classList.contains("hidden"))) {
+        document.body.classList.remove("overflow-hidden");
+      }
+
+      if (modalId === "gallery-modal") {
+        galleryPreviewVideo.pause();
+      }
+    }
+
+    function setContactStatus(message, tone) {
+      contactFormStatus.textContent = message;
+      contactFormStatus.classList.remove("hidden", "text-teaMist", "text-red-200", "text-teaYellow");
+      contactFormStatus.classList.add(tone === "error" ? "text-red-200" : tone === "pending" ? "text-teaYellow" : "text-teaMist");
+    }
+
+    function renderGallery(index) {
+      currentMediaIndex = (index + galleryItems.length) % galleryItems.length;
+      const activeButton = galleryItems[currentMediaIndex];
+      const { type, src, title, description, poster } = activeButton.dataset;
+
+      galleryPreviewTitle.textContent = title;
+      galleryPreviewDescription.textContent = description;
+      galleryPreviewType.textContent = type;
+      galleryPreviewCount.textContent = `${currentMediaIndex + 1} / ${galleryItems.length}`;
+
+      galleryPreviewVideo.pause();
+
+      if (type === "video") {
+        galleryPreviewImage.classList.add("hidden");
+        galleryPreviewVideo.classList.remove("hidden");
+        galleryPreviewVideo.src = src;
+        if (poster) {
+          galleryPreviewVideo.poster = poster;
+        }
+        galleryPreviewVideo.load();
+        galleryPreviewVideo.play().catch(() => { });
+      } else {
+        galleryPreviewVideo.classList.add("hidden");
+        galleryPreviewVideo.removeAttribute("src");
+        galleryPreviewVideo.load();
+        galleryPreviewImage.classList.remove("hidden");
+        galleryPreviewImage.src = src;
+        galleryPreviewImage.alt = title;
+      }
+
+      galleryItems.forEach((button, buttonIndex) => {
+        const active = buttonIndex === currentMediaIndex;
+        button.classList.toggle("ring-2", active);
+        button.classList.toggle("ring-teaYellow", active);
+        button.classList.toggle("bg-white/20", active);
+        button.classList.toggle("scale-[1.01]", active);
+      });
+    }
+
+    panelButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        const filter = button.dataset.filter;
-
-        tabButtons.forEach((item) => {
-          item.classList.toggle("is-active", item === button);
-          item.setAttribute("aria-selected", item === button ? "true" : "false");
-        });
-
-        menuCards.forEach((card) => {
-          const category = card.dataset.category;
-          const shouldShow = filter === "all" || filter === category;
-          card.hidden = !shouldShow;
-        });
+        setPanel(button.dataset.panelButton);
       });
     });
 
-    const observedSections = document.querySelectorAll("main section[id]");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const activeId = entry.target.id;
-          navLinks.forEach((link) => {
-            link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
-          });
-        });
-      },
-      {
-        rootMargin: "-35% 0px -45% 0px",
-        threshold: 0.1
-      }
-    );
+    modalOpenButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        openModal(button.dataset.modalOpen);
+        if (button.dataset.modalOpen === "gallery-modal") {
+          renderGallery(currentMediaIndex);
+        }
+      });
+    });
 
-    observedSections.forEach((section) => observer.observe(section));
+    modalCloseButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        closeModal(button.dataset.modalClose);
+      });
+    });
+
+    modals.forEach((modal) => {
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal(modal.id);
+        }
+      });
+    });
+
+    galleryItems.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        renderGallery(index);
+      });
+    });
+
+    galleryPrev.addEventListener("click", () => renderGallery(currentMediaIndex - 1));
+    galleryNext.addEventListener("click", () => renderGallery(currentMediaIndex + 1));
+
+    document.addEventListener("keydown", (event) => {
+      const galleryOpen = !galleryModal.classList.contains("hidden");
+      const contactOpen = !document.getElementById("contact-modal").classList.contains("hidden");
+
+      if (event.key === "Escape") {
+        if (galleryOpen) closeModal("gallery-modal");
+        if (contactOpen) closeModal("contact-modal");
+      }
+
+      if (galleryOpen && event.key === "ArrowLeft") {
+        renderGallery(currentMediaIndex - 1);
+      }
+
+      if (galleryOpen && event.key === "ArrowRight") {
+        renderGallery(currentMediaIndex + 1);
+      }
+    });
 
     contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-      successMessage.classList.remove("is-visible");
+
+      const endpoint = contactForm.action;
+      const formData = new FormData(contactForm);
+
+      if (!endpoint || endpoint.includes("YOUR_SHEETDB_API_ID")) {
+        setContactStatus("Add your live SheetDB API URL to the form action before sending submissions.", "error");
+        return;
+      }
+
+      if (formData.get("company")) {
+        setContactStatus("Submission blocked.", "error");
+        return;
+      }
+
+      formData.delete("company");
+
+      contactSubmitButton.disabled = true;
+      contactSubmitLabel.textContent = "Sending...";
+      setContactStatus("Sending your message...", "pending");
 
       try {
-        const response = await fetch(contactForm.action, {
-          method: contactForm.method,
-          body: new FormData(contactForm),
-          headers: {
-            Accept: "application/json"
-          }
+        const response = await fetch(endpoint, {
+          method: "POST",
+          body: formData,
         });
 
         if (!response.ok) {
-          throw new Error("Form submission failed");
+          throw new Error(`Request failed with status ${response.status}`);
         }
 
         contactForm.reset();
-        successMessage.classList.add("is-visible");
+        setContactStatus("Thanks. Your message was sent.", "success");
       } catch (error) {
-        contactForm.submit();
+        setContactStatus("The submission could not be sent. Check the URL, permissions, and column names.", "error");
+      } finally {
+        contactSubmitButton.disabled = false;
+        contactSubmitLabel.textContent = "Send inquiry";
       }
     });
+
+    renderGallery(0);
+    setPanel("shop");
   </script>
 </body>
 
