@@ -731,7 +731,7 @@
         </div>
 
         <div class="px-5 py-5 sm:px-6 sm:py-6">
-          <form id="contact-form" class="grid gap-4">
+          <form id="contact-form" data-sheet-endpoint="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec" class="grid gap-4">
             <div class="grid gap-4 sm:grid-cols-2">
               <label class="grid gap-2 text-sm font-semibold text-white">
                 Full name
@@ -758,10 +758,17 @@
                 class="rounded-[1.5rem] border border-white/18 bg-white/10 px-4 py-3 text-base font-medium text-white placeholder:text-white/45 focus:border-teaYellow focus:outline-none focus:ring-2 focus:ring-teaYellow/60"></textarea>
             </label>
 
+            <label class="hidden" aria-hidden="true">
+              Company
+              <input type="text" name="company" tabindex="-1" autocomplete="off" />
+            </label>
+
+            <p class="text-xs leading-5 text-white/60">
+              Replace the placeholder Google Apps Script URL on this form with your deployed web app endpoint to store submissions in Google Sheets.
+            </p>
+
             <div class="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
-              <p id="contact-form-status" class="hidden text-sm font-medium text-teaMist">
-                Thanks. Your message is queued for the Graffitea team.
-              </p>
+              <p id="contact-form-status" class="hidden text-sm font-medium text-teaMist"></p>
               <div class="flex flex-col gap-3 sm:ml-auto sm:flex-row">
                 <button type="button" data-modal-close="contact-modal"
                   class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teaYellow focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
@@ -769,7 +776,7 @@
                 </button>
                 <button type="submit"
                   class="inline-flex min-h-12 items-center justify-center rounded-full bg-teaYellow px-6 py-3 text-sm font-extrabold text-teaInk transition hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-teaBlueDark">
-                  Send inquiry
+                  <span data-submit-label>Send inquiry</span>
                 </button>
               </div>
             </div>
@@ -801,6 +808,8 @@
 
     const contactForm = document.getElementById("contact-form");
     const contactFormStatus = document.getElementById("contact-form-status");
+    const contactSubmitButton = contactForm.querySelector('button[type="submit"]');
+    const contactSubmitLabel = contactForm.querySelector("[data-submit-label]");
 
     let currentMediaIndex = 0;
 
@@ -857,6 +866,12 @@
       if (modalId === "gallery-modal") {
         galleryPreviewVideo.pause();
       }
+    }
+
+    function setContactStatus(message, tone) {
+      contactFormStatus.textContent = message;
+      contactFormStatus.classList.remove("hidden", "text-teaMist", "text-red-200", "text-teaYellow");
+      contactFormStatus.classList.add(tone === "error" ? "text-red-200" : tone === "pending" ? "text-teaYellow" : "text-teaMist");
     }
 
     function renderGallery(index) {
@@ -954,10 +969,50 @@
       }
     });
 
-    contactForm.addEventListener("submit", (event) => {
+    contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-      contactForm.reset();
-      contactFormStatus.classList.remove("hidden");
+
+      const endpoint = contactForm.dataset.sheetEndpoint;
+      const formData = new FormData(contactForm);
+
+      if (!endpoint || endpoint.includes("YOUR_DEPLOYMENT_ID")) {
+        setContactStatus("Add your deployed Google Apps Script URL to data-sheet-endpoint before sending submissions.", "error");
+        return;
+      }
+
+      if (formData.get("company")) {
+        setContactStatus("Submission blocked.", "error");
+        return;
+      }
+
+      const payload = new URLSearchParams({
+        fullName: String(formData.get("full_name") || ""),
+        email: String(formData.get("email") || ""),
+        contactNumber: String(formData.get("contact_number") || ""),
+        message: String(formData.get("message") || ""),
+        pageUrl: window.location.href,
+        userAgent: window.navigator.userAgent,
+      });
+
+      contactSubmitButton.disabled = true;
+      contactSubmitLabel.textContent = "Sending...";
+      setContactStatus("Sending your message to Google Sheets...", "pending");
+
+      try {
+        await fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          body: payload,
+        });
+
+        contactForm.reset();
+        setContactStatus("Thanks. Your message was sent to the Graffitea submissions sheet.", "success");
+      } catch (error) {
+        setContactStatus("The submission could not be sent. Check the Apps Script URL and deployment settings.", "error");
+      } finally {
+        contactSubmitButton.disabled = false;
+        contactSubmitLabel.textContent = "Send inquiry";
+      }
     });
 
     renderGallery(0);
